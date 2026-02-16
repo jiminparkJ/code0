@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learning Report | Crypto Foundations</title>
+    <link rel="stylesheet" href="/src/styles.css" />
+    <script type="module" src="/src/shared.js"></script>
+  </head>
+  <body data-page="home">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="./index.html">Learning Report</a>
+        <nav aria-label="Main navigation">
+          <ul>
+            <li><a data-page="home" href="./index.html">Home</a></li>
+            <li><a data-page="path" href="./learning-path.html">Learning Path</a></li>
+            <li><a data-page="glossary" href="./glossary.html">Glossary</a></li>
+            <li><a data-page="mentor" href="./mentor-summary.html">Mentor Summary</a></li>
+            <li><a data-page="reflection" href="./reflection.html">Reflection</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content" class="container">
+      <section class="hero">
+        <span class="eyebrow">Learning Report · Crypto Foundations</span>
+        <h1>From confusion to clarity: my crypto learning report</h1>
+        <p>This site is a guided learning report designed for mentors and peers. It starts with core ideas, then builds up to transaction flow, Ethereum execution, and practical wallet safety. Every major concept has plain-language intros, interactive modules, and practical explanations.</p>
+      </section>
+
+      <section class="learning-section card">
+        <h2>What you'll learn (concept map)</h2>
+        <p>The map shows how ideas connect. Follow arrows as a story: network principles → identity & signing → transactions & block production → Ethereum-specific concepts → real-world exchange and research tools.</p>
+        <div class="map-grid" role="list" aria-label="Learning concept map">
+          <div class="node-card" role="listitem"><strong>Decentralization</strong><span>Many nodes share control</span></div>
+          <div class="node-card" role="listitem"><strong>Blockchain</strong><span>Linked blocks create immutable history</span></div>
+          <div class="node-card" role="listitem"><strong>Bitcoin & coins</strong><span>Native assets of chains</span></div>
+          <div class="node-card" role="listitem"><strong>Ethereum + EVM</strong><span>Programmable contracts and gas</span></div>
+          <div class="node-card" role="listitem"><strong>Wallet & keys</strong><span>Ownership and signatures</span></div>
+          <div class="node-card" role="listitem"><strong>Mempool to block</strong><span>Fees influence inclusion</span></div>
+          <div class="node-card" role="listitem"><strong>On-chain / off-chain</strong><span>Where data and actions happen</span></div>
+          <div class="node-card" role="listitem"><strong>Explorer + exchanges</strong><span>Observe and trade in practice</span></div>
+        </div>
+        <div class="progress-wrap">
+          <label for="path-progress">Learning path progress</label>
+          <progress id="path-progress" max="100" value="0"></progress>
+          <p id="progress-text">0% of learning path explored</p>
+        </div>
+        <p><a href="./learning-path.html">Start the interactive learning path →</a></p>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">Built as a static GitHub Pages-ready report with accessible interactions.</div>
+    </footer>
+  </body>
+</html>

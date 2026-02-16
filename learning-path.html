@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learning Path | Crypto Foundations</title>
+    <link rel="stylesheet" href="/src/styles.css" />
+    <script type="module" src="/src/learning.js"></script>
+  </head>
+  <body data-page="path">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="./index.html">Learning Report</a>
+        <nav aria-label="Main navigation">
+          <ul>
+            <li><a data-page="home" href="./index.html">Home</a></li>
+            <li><a data-page="path" href="./learning-path.html">Learning Path</a></li>
+            <li><a data-page="glossary" href="./glossary.html">Glossary</a></li>
+            <li><a data-page="mentor" href="./mentor-summary.html">Mentor Summary</a></li>
+            <li><a data-page="reflection" href="./reflection.html">Reflection</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content" class="container">
+      <section class="hero">
+        <span class="eyebrow">Interactive learning journey</span>
+        <h1>Main learning path</h1>
+        <p>Pedagogical order: first network trust principles, then blockchain mechanics, identity and signatures, transaction lifecycle, Ethereum execution model, practical safety, and finally market access tools.</p>
+        <div class="progress-wrap">
+          <label for="path-progress">Learning path progress</label>
+          <progress id="path-progress" max="100" value="0"></progress>
+          <p id="progress-text">0% of learning path explored</p>
+        </div>
+      </section>
+
+      <section class="learning-section" data-track-section>
+        <h2>1) Why crypto networks exist: decentralization, transparency, immutability, and nodes</h2>
+        <h3>ELI5 intro</h3>
+        <p>Imagine a class notebook that everyone can read, and many students keep their own copy. No single student can secretly erase old pages, because others will notice. This is similar to decentralization: control is spread out. Transparency means the notebook is visible, so anyone can check entries. Immutability means old entries are very hard to change without rewriting many linked pages. A node is one student's copy plus the rules they use to validate updates. The system works because many nodes agree on what counts as a valid new page.</p>
+        <h3>Interactive module: on-chain vs off-chain toggle</h3>
+        <div class="module">
+          <label for="data-toggle">Choose where activity happens</label>
+          <select id="data-toggle" aria-describedby="data-toggle-help">
+            <option value="on">On-chain</option>
+            <option value="off">Off-chain</option>
+          </select>
+          <p id="data-toggle-help">Switch to compare trust, speed, and visibility tradeoffs.</p>
+          <div id="data-result" class="content" aria-live="polite"></div>
+        </div>
+        <h3>Deeper explanation</h3>
+        <p>Decentralization reduces single points of failure. In traditional systems, one company server can fail or change records. In blockchain networks, many nodes maintain synchronized ledgers and run consensus rules, so no central actor can unilaterally rewrite history. Transparency matters because verifiability creates shared trust: participants can independently inspect transaction data through nodes and explorers. Immutability comes from cryptographic linking and consensus finality. Each block points to the prior block hash, so changing an earlier block forces recomputation and network-level acceptance, which is computationally or economically impractical. Together, these features support open value transfer without requiring participants to personally trust each counterparty. However, “decentralized” does not mean “free from all power concentration.” Mining pools, validator concentration, and governance influence still exist. The practical takeaway is to think in gradients: some systems are more decentralized and transparent than others, and that affects censorship resistance, auditability, and resilience. Nodes are the operational backbone because they propagate transactions, verify blocks, and enforce protocol rules locally. Running a node gives stronger self-verification than relying on third-party APIs.</p>
+        <h3>Key takeaways</h3>
+        <ul><li>Decentralization spreads control across many independent nodes.</li><li>Transparency enables public verification, not automatic privacy.</li><li>Immutability means edits become expensive and socially rejectable.</li><li>Nodes enforce rules and keep the network honest.</li></ul>
+        <h3>Common misconceptions</h3>
+        <ul><li>"Decentralized" does not mean there are no influential actors.</li><li>"Transparent" does not mean all identities are known by default.</li><li>"Immutable" does not mean impossible to change under any condition.</li></ul>
+      </section>
+
+      <section class="learning-section" data-track-section>
+        <h2>2) Blockchain basics: blocks, coins, tokens, Bitcoin, stablecoins, Ethereum</h2>
+        <h3>ELI5 intro</h3>
+        <p>Think of blockchain as a train of locked wagons where each wagon points to the previous one. Bitcoin is the first famous train, and its native asset is a coin called BTC. Ethereum is another train, but it also carries programmable actions, not just payments. A coin is native to its own blockchain, while a token is created on top of an existing chain. Stablecoins are tokens designed to stay close to a reference value, often one US dollar. This helps people transfer value with less price swing than volatile coins.</p>
+        <h3>Interactive module: linked-block immutability demo</h3>
+        <div class="module two-col">
+          <div>
+            <label for="chain-tx">Edit transaction in block 1</label>
+            <input id="chain-tx" value="Alice pays Bob 1 coin" />
+            <button id="update-chain">Recalculate chain hashes</button>
+          </div>
+          <div id="chain-output" class="content" aria-live="polite"></div>
+        </div>
+        <h3>Deeper explanation</h3>
+        <p>A blockchain is an append-only ledger grouped into blocks. Each block typically contains transaction data, metadata, and a reference to the previous block hash. This chaining creates tamper evidence: changing one block changes its hash, which invalidates the next block reference. Bitcoin prioritizes secure peer-to-peer digital money and predictable monetary issuance. Ethereum generalizes the model by supporting programmable execution through smart contracts (covered next). Coin vs token is operationally important: coins pay base-layer fees and secure the protocol economy, while tokens represent assets or utility defined by smart contract logic. Stablecoins reduce volatility for payments, treasury management, and settlement, but they introduce separate trust assumptions depending on design (fiat-backed, overcollateralized, algorithmic). Understanding these distinctions helps prevent category confusion, such as expecting all crypto assets to behave like BTC or all stablecoins to have equal risk. In a learning report context, this section bridges abstract network properties to concrete asset types learners actually encounter.</p>
+        <h3>Key takeaways</h3>
+        <ul><li>Blockchain records are linked; edits ripple forward through hashes.</li><li>Bitcoin and Ethereum share ledger roots but differ in scope.</li><li>Coins are native assets; tokens are built on top of existing chains.</li><li>Stablecoins target price stability but have different trust models.</li></ul>
+        <h3>Common misconceptions</h3>
+        <ul><li>All tokens are not the same as coins.</li><li>All stablecoins are not equally safe.</li><li>Ethereum is not "just another Bitcoin copy"; it is programmable.</li></ul>
+      </section>
+
+      <section class="learning-section" data-track-section>
+        <h2>3) Ownership and identity: wallet, address, keys, recovery phrase, signatures</h2>
+        <h3>ELI5 intro</h3>
+        <p>A wallet is like a control panel for your digital keys, not a bag that stores coins inside itself. Your public key and wallet address are like a mailbox label people can send assets to. Your private key is like the secret key that opens your mailbox control, so it must stay private. A secret recovery phrase is a human-readable backup that can regenerate many private keys. If someone gets that phrase, they can control your funds. Signatures are proof that the real key owner approved a message.</p>
+        <h3>Interactive module: sign and verify</h3>
+        <div class="module two-col">
+          <div>
+            <div id="key-info" class="content"></div>
+            <label for="sig-message">Message to sign</label>
+            <textarea id="sig-message" rows="4">I approve sending 0.5 ETH to Bob.</textarea>
+            <button id="sign-btn">Sign message</button>
+            <button id="verify-btn" style="margin-top:.6rem;">Verify signature</button>
+          </div>
+          <div id="sig-output" class="content" aria-live="polite"></div>
+        </div>
+        <h3>Deeper explanation</h3>
+        <p>Cryptographic key pairs separate public identity from secret authorization. The public key can be shared for verification, while the private key must never be exposed. Wallet addresses are shorter identifiers derived from keys, making daily use practical. A wallet application manages keys, transaction creation, and signing workflow, but security still depends on how the user stores recovery material. A secret recovery phrase (seed phrase) is especially sensitive because it can regenerate key hierarchies in many wallet standards. Good practice includes offline backup, no cloud screenshots, and phishing-resistant verification habits. Digital signatures provide non-repudiable authorization: if Alice signs a transaction, nodes can verify integrity and origin without revealing Alice's private key. If the message changes after signing, verification fails. This allows trust-minimized transfer and contract interactions. The conceptual sequence is crucial: addresses receive value, keys prove control, signatures authorize actions, and wallets orchestrate these pieces. Learners who internalize this model make fewer operational mistakes than learners who think wallets “store coins locally.”</p>
+        <h3>Key takeaways</h3>
+        <ul><li>Wallets manage keys; they do not physically store coins.</li><li>Public key/address can be shared; private key and seed phrase cannot.</li><li>Signatures prove approval without exposing private keys.</li><li>Message changes invalidate signatures.</li></ul>
+        <h3>Common misconceptions</h3>
+        <ul><li>A hardware wallet is not invincible if seed phrase hygiene is poor.</li><li>A wallet address is not the same thing as a private key.</li><li>Recovery phrase backup in cloud notes is not safe practice.</li></ul>
+      </section>
+
+      <section class="learning-section" data-track-section>
+        <h2>4) Transaction lifecycle: transaction, mempool, fees, mining/signing blocks, consensus, explorer</h2>
+        <h3>ELI5 intro</h3>
+        <p>A transaction is a signed instruction, like "send value from Alice to Bob." It first waits in a public waiting room called the mempool. Block producers choose which waiting transactions to include, often preferring higher fees. In proof-of-work systems this is called mining a block; in proof-of-stake, validators sign/attest blocks. Consensus is the network method for agreeing on one shared history. Explorers are read-only windows where anyone can inspect status and details.</p>
+        <h3>Interactive module: mempool to block inclusion</h3>
+        <div class="module two-col">
+          <div>
+            <label for="tx-from">From</label><input id="tx-from" value="Alice" />
+            <label for="tx-to">To</label><input id="tx-to" value="Bob" />
+            <label for="tx-amount">Amount</label><input id="tx-amount" type="number" value="1" />
+            <label for="tx-fee">Fee priority</label><input id="tx-fee" type="number" value="5" />
+            <button id="add-tx">Add to mempool</button>
+            <button id="mine-block" style="margin-top:.6rem;">Assemble block (pick top fees)</button>
+          </div>
+          <div>
+            <div class="content"><strong>Mempool</strong><ul id="mempool-list"></ul></div>
+            <div class="content" style="margin-top:.8rem;"><strong>New block</strong><ul id="block-list"><li>Block not assembled yet.</li></ul></div>
+          </div>
+        </div>
+        <h3>Interactive module: explorer walkthrough mock</h3>
+        <div class="module fake-explorer">
+          <h4>Fake transaction details</h4>
+          <dl>
+            <dt>Tx Hash</dt><dd class="output">0x8f2c...e19d</dd>
+            <dt>Status</dt><dd>Success (included in block 19482014)</dd>
+            <dt>From / To</dt><dd>Alice → Bob</dd>
+            <dt>Value</dt><dd>0.52 ETH</dd>
+            <dt>Fee paid</dt><dd>0.00126 ETH</dd>
+            <dt>Confirmations</dt><dd>128 (higher means harder to reorganize)</dd>
+          </dl>
+          <p class="checkpoint">Use explorers to verify what actually happened on-chain instead of trusting screenshots.</p>
+        </div>
+        <h3>Deeper explanation</h3>
+        <p>A transaction lifecycle begins with local construction and signature, then broadcast to peers. Nodes validate format, signature correctness, nonce/rule constraints, and balance assumptions before relaying into mempools. Mempool contents are not globally identical; each node has a local view based on peers and policy. Block producers optimize inclusion according to fee revenue and constraints like block size or gas limits. In proof-of-work networks, miners expend computational work to propose blocks; in proof-of-stake networks, validators propose and sign/attest blocks according to stake-weighted rules. Consensus resolves conflicts and finalizes canonical history. Fees serve dual purposes: compensating producers and preventing spam. During congestion, fee markets become competitive and low-fee transactions may wait longer. Explorers aggregate node data into readable dashboards, making them essential for debugging and education. Learners should understand that “pending” means not yet included, and inclusion is probabilistic based on fee pressure and network demand.</p>
+        <h3>Key takeaways</h3>
+        <ul><li>Transactions wait in mempool before inclusion.</li><li>Higher fees typically increase inclusion priority.</li><li>Mining/validation and consensus turn pending data into shared history.</li><li>Explorers are verification tools for real on-chain events.</li></ul>
+        <h3>Common misconceptions</h3>
+        <ul><li>Mempool is not one single global queue with perfect ordering.</li><li>"Sent" in a wallet UI is not the same as final settlement.</li><li>A single confirmation may not equal strong finality in all contexts.</li></ul>
+      </section>
+
+      <section class="learning-section" data-track-section>
+        <h2>5) Ethereum execution: smart contracts, EVM, gas, transaction fee</h2>
+        <h3>ELI5 intro</h3>
+        <p>Ethereum can be imagined as a world computer shared by many participants. Smart contracts are small programs stored on-chain. The EVM (Ethereum Virtual Machine) is the engine that runs those programs in a predictable way for every node. Running computation costs gas, like paying for electricity in tiny units. The more complex the action, the more gas it needs. Your total fee depends on gas used and gas price.</p>
+        <h3>Interactive module: gas intuition</h3>
+        <div class="module two-col">
+          <div>
+            <label for="gas-limit">Gas limit (work budget)</label>
+            <input id="gas-limit" type="range" min="21000" max="300000" step="1000" value="70000" />
+            <label for="gas-price">Gas price (gwei per gas)</label>
+            <input id="gas-price" type="range" min="1" max="120" step="1" value="20" />
+          </div>
+          <div class="content">
+            <p id="gas-output" aria-live="polite"></p>
+            <p id="gas-mood" class="badge" aria-live="polite"></p>
+            <p>Simple transfer ≈ 21,000 gas; contract interactions often need more.</p>
+          </div>
+        </div>
+        <h3>Deeper explanation</h3>
+        <p>Smart contracts are deterministic programs: given the same state and inputs, every EVM node should produce the same result. This shared execution enables tokens, decentralized exchanges, lending logic, governance, and many other applications. The EVM defines opcodes and gas costs so computation has measurable resource pricing. Gas limit caps how much work a transaction may consume; gas price reflects how much the user is willing to pay per unit of gas. Total fee roughly equals gas used multiplied by effective gas price. If gas settings are too low for required execution, the transaction can fail while still consuming resources. This fee model protects network resources from spam and allocates scarce block space. Understanding gas also clarifies why some actions are cheap (simple value transfer) and others expensive (complex contract interactions). Ethereum-specific vocabulary becomes easier when mapped to earlier concepts: transaction + signature + mempool + block inclusion still apply, but execution complexity introduces EVM and gas economics on top.</p>
+        <h3>Key takeaways</h3>
+        <ul><li>Smart contracts are on-chain programs run by the EVM.</li><li>Gas measures computational work; fee = gas used × gas price.</li><li>Complex interactions usually cost more than simple transfers.</li><li>Fee markets prioritize scarce execution space.</li></ul>
+        <h3>Common misconceptions</h3>
+        <ul><li>Gas is not an extra token separate from ETH on mainnet.</li><li>High gas limit does not always mean high fee paid; actual use matters.</li><li>Smart contracts are not automatically bug-free because they are on-chain.</li></ul>
+      </section>
+
+      <section class="learning-section" data-track-section>
+        <h2>6) Safety operations: secret recovery phrase and wallet habits</h2>
+        <h3>ELI5 intro</h3>
+        <p>Your recovery phrase is like the master key to your entire house, not just one door. If someone copies it, they can enter even if your app password is strong. Good security is mostly about consistent daily habits. You want backups that survive accidents but stay private from attackers. You also want to verify what you sign before confirming. Calm, repeatable routines beat panic-based behavior.</p>
+        <h3>Interactive module: wallet safety checklist</h3>
+        <div class="module" id="safety-checklist">
+          <label><input type="checkbox" /> I wrote my recovery phrase offline (paper/metal), not in cloud notes.</label>
+          <label><input type="checkbox" /> I tested restoring the wallet backup on a spare device.</label>
+          <label><input type="checkbox" /> I verify domain names and transaction details before signing.</label>
+          <label><input type="checkbox" /> I use separate wallets for daily use vs long-term storage.</label>
+          <label><input type="checkbox" /> I never share seed phrase or private keys with support chats.</label>
+          <p id="safety-score" class="badge">Safety readiness: 0%</p>
+        </div>
+        <h3>Deeper explanation</h3>
+        <p>Most losses happen through operational mistakes rather than cryptographic failure. Recovery phrase management is the highest-priority control because compromise bypasses many other defenses. Practical security should be layered: strong device hygiene, phishing resistance, transaction simulation awareness, and compartmentalized wallet design. A useful pattern is “hot vs cold” separation: hot wallets handle frequent, lower-value activity; cold storage holds long-term assets with stricter access. Another key habit is slow confirmation—read recipient address, amount, and function call intent before signing. Social engineering frequently exploits urgency, so any pressure to act immediately is a signal to pause. Backup strategy should consider theft, fire/flood, and inheritance/continuity needs. These are human-process risks, not protocol-layer risks. Teaching this with practical tone helps avoid fear while still emphasizing stakes.</p>
+        <h3>Key takeaways</h3>
+        <ul><li>Seed phrase protection is the core wallet security priority.</li><li>Layered habits outperform single-tool reliance.</li><li>Separate wallet roles reduce blast radius.</li><li>Always inspect what you are signing.</li></ul>
+        <h3>Common misconceptions</h3>
+        <ul><li>"I use a hardware wallet" is not enough by itself.</li><li>Clipboard history and screenshots are not safe seed backups.</li><li>Fast signing is not expertise; careful signing is.</li></ul>
+      </section>
+
+      <section class="learning-section" data-track-section>
+        <h2>7) Trading pathways and practical usage: p2p exchange, OTC exchange, explorers in workflow</h2>
+        <h3>ELI5 intro</h3>
+        <p>When people buy or sell crypto, they can use different pathways. A p2p exchange matches individuals directly, often with local payment methods. OTC (over-the-counter) exchange is usually a desk-style service for larger trades with negotiated pricing. Both can be useful depending on size, liquidity, and privacy needs. After any transfer, you can verify final movement through an explorer. The key is understanding tradeoffs, not assuming one path is always best.</p>
+        <h3>Interactive module: path selector</h3>
+        <div class="module">
+          <label for="route-mode">Choose scenario</label>
+          <select id="route-mode">
+            <option value="small">Small personal trade</option>
+            <option value="large">Large treasury-like trade</option>
+          </select>
+          <div id="route-output" class="content" aria-live="polite"></div>
+        </div>
+        <h3>Deeper explanation</h3>
+        <p>P2P exchange models are often flexible, allowing users to negotiate directly and settle via regional rails. This can improve access where traditional exchange support is limited, but it requires strong counterparty and fraud controls. OTC desks are typically used for larger orders where participants want reduced slippage and coordinated settlement support. They may offer tailored execution, but involve trust and compliance procedures. In both pathways, post-trade verification remains essential: confirm receiving address, transaction hash, confirmations, and final settled balance through a reliable explorer. For learners, this section converts protocol understanding into operational decision-making: how do you choose an access method that matches size, urgency, and risk tolerance? A mature approach emphasizes process controls (identity checks, test transactions, verified channels) over hype or speed.</p>
+        <h3>Key takeaways</h3>
+        <ul><li>P2P and OTC serve different trade size and workflow needs.</li><li>Counterparty verification is crucial in both pathways.</li><li>Always verify settlement with explorer data.</li></ul>
+        <h3>Common misconceptions</h3>
+        <ul><li>P2P is not automatically cheaper or safer in every region.</li><li>OTC is not only for institutions; it is mainly about order profile.</li><li>A chat confirmation is not proof—on-chain confirmation is.</li></ul>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">Continue with glossary for quick revision and definitions.</div>
+    </footer>
+
+    <script type="module">
+      import '/src/shared.js';
+      const mode = document.querySelector('#route-mode');
+      const out = document.querySelector('#route-output');
+      const render = () => {
+        if (!mode || !out) return;
+        out.innerHTML = mode.value === 'small'
+          ? '<strong>P2P-fit:</strong><p>For smaller, local transactions, P2P can offer flexible payment options. Use escrow, verify identity, and test with small amounts first.</p>'
+          : '<strong>OTC-fit:</strong><p>For larger orders, OTC desks can reduce market impact and coordinate settlement. Ask for execution terms and confirmation workflow.</p>';
+      };
+      mode?.addEventListener('change', render);
+      render();
+    </script>
+  </body>
+</html>
